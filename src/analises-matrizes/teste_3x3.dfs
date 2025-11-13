@@ -1,0 +1,8 @@
+ALGORITIMO: DFS
+HEURISTICA: 
+ORIGEM: (0,0)
+DESTINO: (2,2)
+CAMINHO: (0,0)->(0,1)->(0,2)->(1,2)->(1,1)->(1,0)->(2,0)->(2,1)->(2,2)
+CUSTO: 8,0
+NOS EXPANDIDOS: 9
+TEMPO (ms): 0.19

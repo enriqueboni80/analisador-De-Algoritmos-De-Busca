@@ -17,17 +17,55 @@ import java.util.stream.Collectors;
  */
 public class Main {
 
+    private static String limparAspas(String s) {
+        return s.replace("\"", "")
+                .replace("“", "") // Aspa curva inicial
+                .replace("”", "") // Aspa curva final
+                .replace("'", ""); // Aspa simples, por segurança
+    }
+
     public static void main(String[] args) {
 
-        // --- PARÂMETROS FIXOS ---
-        // Arquivo de entrada (lido via ClassLoader)
-        final String PATH_MATRIZ = "matrizes/matriz.txt";
-        // Coordenadas fixas
-        final String coordOrigemStr = "0,0";
-        final String coordDestinoStr = "2,2";
-        // Diretório de saída para os resultados
-        final String OUTPUT_DIR = "src/analises-matrizes"; // NOVO DIRETÓRIO
-        // ------------------------
+// --- PARÂMETROS PADRÕES (FIXOS - Fallback) ---
+        final String DEFAULT_PATH_MATRIZ = "matrizes/teste_3x3.txt";
+        final String DEFAULT_COORD_ORIGEM = "0,0";
+        final String DEFAULT_COORD_DESTINO = "2,2";
+        // Diretório de saída (SEMPRE FIXO, conforme solicitado)
+        final String OUTPUT_DIR = "src/analises-matrizes";
+
+        // --- DEFINIÇÃO DOS PARÂMETROS FINAIS (Prioriza args) ---
+        String PATH_MATRIZ = "";
+        String coordOrigemStr = "";
+        String coordDestinoStr = "";
+
+        // 1. Arquivo de entrada (args[0])
+        if (args.length >= 1) {
+            PATH_MATRIZ = args[0];
+        } else {
+            PATH_MATRIZ = DEFAULT_PATH_MATRIZ;
+        }
+
+        // 2. Coordenadas de Origem (args[1])
+        if (args.length >= 2) {
+            coordOrigemStr = limparAspas(args[1]);
+        } else {
+            coordOrigemStr = DEFAULT_COORD_ORIGEM;
+        }
+
+        // 3. Coordenadas de Destino (args[2])
+        if (args.length >= 3) {
+            coordDestinoStr = limparAspas(args[2]);
+        } else {
+            coordDestinoStr = DEFAULT_COORD_DESTINO;
+        }
+        // ----------------------------------------
+
+        System.out.println("--- Parâmetros de Execução ---");
+        System.out.println("Arquivo de Entrada: " + PATH_MATRIZ);
+        System.out.println("Origem: " + coordOrigemStr);
+        System.out.println("Destino: " + coordDestinoStr);
+        System.out.println("Arquivos de Saída: " + OUTPUT_DIR);
+        System.out.println("------------------------------");
 
         try {
             // 1. Ler o grafo (matriz de adjacência)

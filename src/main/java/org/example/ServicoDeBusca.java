@@ -309,20 +309,23 @@ public class ServicoDeBusca {
     private List<No> reconstruirCaminho(No noFinal) {
         List<No> caminho = new ArrayList<>();
         No atual = noFinal;
+
+        // 1. Itera para trás (do destino para a origem)
         while (atual != null) {
             caminho.add(atual);
-            // Paramos quando chegarmos ao nó de origem (onde pai é null)
             if (atual.pai == null) {
-                break;
+                break; // Parou no nó de origem, onde pai deve ser null
             }
             atual = atual.pai;
         }
 
-        // Se o caminho só tem o nó de destino, algo deu errado (a menos que origem == destino)
-        if (caminho.size() <= 1 && !caminho.isEmpty() && caminho.get(0).pai != null) {
+        // 2. VALIDAÇÃO CRÍTICA (Garante que chegamos na origem)
+        // Se o último nó tem pai diferente de null, o caminho está incompleto/quebrado.
+        if (caminho.isEmpty() || caminho.get(caminho.size() - 1).pai != null) {
             return new ArrayList<>();
         }
 
+        // 3. Inverte e retorna
         Collections.reverse(caminho);
         return caminho;
     }

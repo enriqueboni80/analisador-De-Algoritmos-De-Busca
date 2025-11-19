@@ -5,4 +5,4 @@ DESTINO: (2,2)
 CAMINHO: (0,0)->(1,0)->(2,0)->(2,1)->(2,2)
 CUSTO: 10,0
 NOS EXPANDIDOS: 8
-TEMPO (ms): 2.65
+TEMPO (ms): 3.26

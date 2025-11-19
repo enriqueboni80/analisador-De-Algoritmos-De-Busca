@@ -24,6 +24,37 @@ public class Main {
                 .replace("'", ""); // Aspa simples, por segurança
     }
 
+    private static List<String> listarConteudo(String caminhoDoDiretorio) {
+
+        // 1. Cria um objeto File para o diretório
+        File pasta = new File(caminhoDoDiretorio);
+
+        // 2. Obtém a lista de arquivos e diretórios
+        File[] listaDeItens = pasta.listFiles();
+
+        // ❗ CORREÇÃO 1 e 2: Tipo de dado correto (List) e inicialização (new ArrayList<>())
+        List<String> arrayDePaths = new ArrayList<>();
+
+        // 3. Verifica se a pasta existe e lista o conteúdo
+        if (listaDeItens != null && listaDeItens.length > 0) {
+            System.out.println("--- Conteúdo do Diretório: " + caminhoDoDiretorio + " ---");
+
+            for (File item : listaDeItens) {
+                // Se o item for um ARQUIVO, adiciona o caminho completo à lista.
+                if (item.isFile()) {
+                    // ❗ CORREÇÃO 3: Coloque a impressão DENTRO da condição
+                    System.out.println("Caminho encontrado: " + item.getAbsolutePath());
+                    arrayDePaths.add(item.getAbsolutePath());
+                }
+            }
+        } else {
+            System.out.println("O diretório está vazio, não existe ou ocorreu um erro.");
+        }
+
+        // ❗ CORREÇÃO 4: O método deve retornar o valor prometido
+        return arrayDePaths;
+    }
+
     public static void main(String[] args) {
 
 // --- PARÂMETROS PADRÕES (FIXOS - Fallback) ---

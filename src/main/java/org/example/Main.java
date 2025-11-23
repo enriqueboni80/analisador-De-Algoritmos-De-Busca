@@ -49,13 +49,14 @@ public class Main {
 
     public static void main(String[] args) {
         final String OUTPUT_DIR = "src/analises-matrizes";
+        final String NOME_ARQUIVO_CONSOLIDADO = "1-relatorio_consolidado.txt";
         String coordOrigemStr = "";
         String coordDestinoStr = "";
 
         try (Scanner scanner = new Scanner(System.in)) {
-            System.out.println("Insira a coordenada de Origem (Ex: 0,0):");
+            System.out.print("Insira a coordenada de Origem (Ex: 0,0): ");
             coordOrigemStr = scanner.nextLine();
-            System.out.println("Insira a coordenada de Destino (Ex: 2,2):");
+            System.out.print("Insira a coordenada de Destino (Ex: 2,2): ");
             coordDestinoStr = scanner.nextLine();
 
             List<String> caminhos = listarConteudo("src/main/resources/matrizes");
@@ -102,8 +103,8 @@ public class Main {
                     }
 
                     for (ResultadoBusca resultado : resultados) {
-                        // Chama o método com o diretório
                         escreverSaida(resultado, OUTPUT_DIR, nomeBaseSaida);
+                        escreverSaidaConsolidada(resultado, OUTPUT_DIR, nomeBaseSaida, NOME_ARQUIVO_CONSOLIDADO);
                     }
 
                     System.out.println("Buscas concluídas. " + resultados.size() + " arquivos de saída gerados em: " + OUTPUT_DIR);
@@ -169,6 +170,7 @@ public class Main {
 
         try (PrintWriter escritor = new PrintWriter(new FileWriter(nomeArquivoSaida))) {
 
+            escritor.println("MATRIZ: " + nomeBaseArquivo.replace(".txt", ""));
             escritor.println("ALGORITIMO: " + resultado.getNomeAlgoritmo());
             escritor.println("HEURISTICA: " + (resultado.getNomeHeuristica() != null ? resultado.getNomeHeuristica() : ""));
             escritor.println("ORIGEM: " + resultado.getNoOrigem());
@@ -187,6 +189,28 @@ public class Main {
 
             escritor.println("NOS EXPANDIDOS: " + resultado.getNosExpandidos());
             escritor.println("TEMPO (ms): " + String.format("%.2f", resultado.getTempoMs()).replace(",", "."));
+        }
+    }
+
+    private static void escreverSaidaConsolidada(ResultadoBusca resultado, String diretorio, String nomeBaseArquivo, String NOME_ARQUIVO_CONSOLIDADO) throws IOException {
+        String caminhoConsolidado = diretorio + File.separator + NOME_ARQUIVO_CONSOLIDADO;
+
+        try (PrintWriter escritor = new PrintWriter(new FileWriter(caminhoConsolidado, true))) {
+
+            escritor.println("--- NOVO TESTE ---");
+            escritor.println("MATRIZ: " + nomeBaseArquivo);
+            escritor.println("ALGORITIMO: " + resultado.getNomeAlgoritmo());
+            escritor.println("HEURISTICA: " + (resultado.getNomeHeuristica() != null ? resultado.getNomeHeuristica() : "N/A"));
+
+            if (resultado.getCaminho() != null && !resultado.getCaminho().isEmpty()) {
+                escritor.println("CUSTO: " + String.format("%.1f", resultado.getCusto()));
+            } else {
+                escritor.println("CUSTO: N/A");
+            }
+            escritor.println("NOS_EXPANDIDOS: " + resultado.getNosExpandidos());
+            escritor.println("TEMPO_MS: " + String.format("%.2f", resultado.getTempoMs()).replace(",", "."));
+
+            escritor.println();
         }
     }
 }

@@ -1,3 +1,4 @@
+MATRIZ: matrix_32x32
 ALGORITIMO: A*
 HEURISTICA: Manhattan
 ORIGEM: (0,0)

@@ -1,3 +1,4 @@
+MATRIZ: matrix_16x16
 ALGORITIMO: A*
 HEURISTICA: Euclidiana
 ORIGEM: (0,0)

@@ -1,3 +1,4 @@
+MATRIZ: matrix_64x64
 ALGORITIMO: A*
 HEURISTICA: Euclidiana
 ORIGEM: (0,0)

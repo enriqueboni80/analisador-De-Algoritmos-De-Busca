@@ -1,3 +1,4 @@
+MATRIZ: matrix_4x4
 ALGORITIMO: BFS
 HEURISTICA: 
 ORIGEM: (0,0)
@@ -5,4 +6,4 @@ DESTINO: (2,2)
 CAMINHO: (0,0)->(0,1)->(0,2)->(1,2)->(2,2)
 CUSTO: 14,0
 NOS EXPANDIDOS: 12
-TEMPO (ms): 0.03
+TEMPO (ms): 0.02

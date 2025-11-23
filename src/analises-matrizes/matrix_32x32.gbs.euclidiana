@@ -1,3 +1,4 @@
+MATRIZ: matrix_32x32
 ALGORITIMO: GBS
 HEURISTICA: Euclidiana
 ORIGEM: (0,0)

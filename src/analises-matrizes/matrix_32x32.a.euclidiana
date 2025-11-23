@@ -1,3 +1,4 @@
+MATRIZ: matrix_32x32
 ALGORITIMO: A*
 HEURISTICA: Euclidiana
 ORIGEM: (0,0)
@@ -5,4 +6,4 @@ DESTINO: (2,2)
 CAMINHO: (0,0)->(1,0)->(1,1)->(1,2)->(2,2)
 CUSTO: 18,0
 NOS EXPANDIDOS: 8
-TEMPO (ms): 0.18
+TEMPO (ms): 0.19

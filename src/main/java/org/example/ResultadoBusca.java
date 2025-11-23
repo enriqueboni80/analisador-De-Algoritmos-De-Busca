@@ -2,10 +2,7 @@ package org.example;
 
 import java.util.List;
 
-/**
- * Armazena todos os dados de saída de uma única execução de algoritmo.
- * [cite: 59-67]
- */
+
 public class ResultadoBusca {
     private final Algoritmo algoritmo;
     private final Heuristica heuristica;
@@ -48,10 +45,7 @@ public class ResultadoBusca {
         return null;
     }
 
-    /**
-     * Gera o sufixo do arquivo (ex: "bfs", "a.manhattan").
-     * [cite: 54-58]
-     */
+
     public String getSufixoArquivo() {
         switch (algoritmo) {
             case BFS: return "bfs";

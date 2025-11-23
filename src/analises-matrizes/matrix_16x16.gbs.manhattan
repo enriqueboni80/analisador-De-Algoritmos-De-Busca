@@ -1,3 +1,4 @@
+MATRIZ: matrix_16x16
 ALGORITIMO: GBS
 HEURISTICA: Manhattan
 ORIGEM: (0,0)
@@ -5,4 +6,4 @@ DESTINO: (2,2)
 CAMINHO: (0,0)->(0,1)->(0,2)->(1,2)->(2,2)
 CUSTO: 18,0
 NOS EXPANDIDOS: 5
-TEMPO (ms): 0.27
+TEMPO (ms): 0.28

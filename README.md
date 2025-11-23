@@ -87,6 +87,7 @@ CUSTO: 5.0
 NOS EXPANDIDOS: 9 
 TEMPO (ms): 0.15
 ```
+---
 
 ## ✓ Resultado Final da Análise
 [Veja aqui o resultado final da Análise](RelatorioDeAnalise.md)

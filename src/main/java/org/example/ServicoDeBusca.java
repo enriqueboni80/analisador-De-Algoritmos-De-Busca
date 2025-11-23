@@ -49,11 +49,8 @@ public class ServicoDeBusca {
         List<No> caminho = new ArrayList<>();
         int nosExpandidos;
 
-        // --- CORREÇÃO 1: Garante que a busca use instâncias limpas ---
-        // Cria clones limpos para garantir que o estado de uma busca não afete a próxima.
         No noOrigem = criarNoDoPrototipo(origem.indice);
         No noDestino = criarNoDoPrototipo(destino.indice);
-        // --------------------------------------------------------------
 
         No noDestinoEncontrado = null;
         ContadorInt contadorNosExpandidos = new ContadorInt(0);
@@ -84,20 +81,17 @@ public class ServicoDeBusca {
         if (noDestinoEncontrado != null) {
             caminho = reconstruirCaminho(noDestinoEncontrado);
 
-            // --- CORREÇÃO 2: Usa o custoG rastreado para algoritmos ponderados ---
             if (algo == Algoritmo.DIJKSTRA || algo == Algoritmo.A_ESTRELA) {
                 // Assume que o No.java tem getCustoG() ou o campo é acessível
                 custo = noDestinoEncontrado.custoG;
             } else {
                 custo = calcularCusto(caminho);
             }
-            // -------------------------------------------------------------------
         }
 
         return new ResultadoBusca(algo, heuristica, origem, destino, caminho, custo, nosExpandidos, tempoMs);
     }
 
-    // --- Implementações dos Algoritmos (Usando as novas variáveis noOrigem, noDestino) ---
 
     private No rodarBFS(No origem, No destino, ContadorInt contadorNosExpandidos) {
         Queue<No> fila = new LinkedList<>();
@@ -286,7 +280,6 @@ public class ServicoDeBusca {
         return null;
     }
 
-    // --- Funções Auxiliares ---
 
     private No criarNoDoPrototipo(int indice) {
         No prototipo = prototiposNos.get(indice);
@@ -319,20 +312,16 @@ public class ServicoDeBusca {
             atual = atual.pai;
         }
 
-        // 2. VALIDAÇÃO CRÍTICA (Garante que chegamos na origem)
-        // Se o último nó tem pai diferente de null, o caminho está incompleto/quebrado.
         if (caminho.isEmpty() || caminho.get(caminho.size() - 1).pai != null) {
             return new ArrayList<>();
         }
 
-        // 3. Inverte e retorna
         Collections.reverse(caminho);
         return caminho;
     }
 
     private double calcularCusto(List<No> caminho) {
         double custo = 0;
-        // Caminho só tem custo se tiver pelo menos 2 nós
         if (caminho.size() < 2) return 0;
 
         for (int i = 0; i < caminho.size() - 1; i++) {

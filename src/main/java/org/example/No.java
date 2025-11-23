@@ -2,9 +2,6 @@ package org.example;
 
 import java.util.Objects;
 
-/**
- * Representa um nó no grafo, com sua posição no grid e custos de busca.
- */
 public class No {
     final int indice; // Índice na matriz de adjacência (0 a N*N-1)
     final int linha;
@@ -41,11 +38,6 @@ public class No {
         this.pai = pai;
     }
 
-
-    /**
-     * Retorna a representação (linha,coluna) para o arquivo de saída.
-     * [cite: 62, 63, 64]
-     */
     @Override
     public String toString() {
         return "(" + linha + "," + coluna + ")";

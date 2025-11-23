@@ -1,4 +1,5 @@
 # 📈 Relatório de Análise de Algoritmos de Busca em Grafos
+#### Aluno: Enrique Santos Bonifácio Leite | RA: 32523421 | (Una Nov/2025)
 
 Este relatório analisa os resultados de testes de performance de sete variações de algoritmos de busca (BFS, DFS, Dijkstra, GBS com duas heurísticas e A\* com duas heurísticas) em quatro tamanhos de matrizes (4x4, 16x16, 32x32 e 64x64). A análise se baseia em três métricas principais: **Custo do Caminho**, **Nós Expandidos** e **Tempo de Execução (ms)**.
 

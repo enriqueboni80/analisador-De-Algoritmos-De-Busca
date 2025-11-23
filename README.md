@@ -8,6 +8,7 @@ Este projeto em Java visa testar e comparar a performance de diferentes algoritm
 | :--- |:-------------------------------------------------------|
 | **Programa Principal** | `AnalisadorDeAlgoritmosDeBusca`                        |
 | **Autor** | Enrique Santos Bonifácio Leite                         |
+| **Git** | https://github.com/enriqueboni80/analisador-De-Algoritmos-De-Busca|
 | **Unidade Curricular** | Estrutura de Dados e Análise de Algoritmos – 2º / 2025 |
 | **Professor** | Lucas Goulart Silva                                    |
 | **Prazo de Entrega** | 26/11/2025                                             |
